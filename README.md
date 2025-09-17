@@ -50,6 +50,41 @@ Due to Rosetta-based amd64 simulation, use this special command to run GDB:
 sudo apt update && sudo apt install build-essential flex bison
 ```
 
+## Connecting to the Docker Container via SSH with VSCode
+
+To develop inside the Docker container using VSCode's Remote SSH extension:
+
+1. **Run the Docker container with SSH port exposed**:
+
+   ```bash
+   docker run --platform linux/amd64 -p 2222:22 -v $SPCA:/home/user --rm -it sysprog bash
+   ```
+
+   For Apple Silicon Mac users with GDB support:
+
+   ```bash
+   docker run --platform linux/amd64 --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -p 2222:22 -v $SPCA:/home/user --rm -it sysprog bash
+   ```
+
+2. **Inside the container, install and start the SSH server**:
+
+   ```bash
+   sudo apt update
+   sudo apt install openssh-server
+   sudo service ssh start
+   sudo passwd user  # Set a password for the 'user' account
+   ```
+
+3. **In VSCode, connect via Remote SSH**:
+   - Install the "Remote SSH" extension if not already installed.
+   - Open the command palette (Cmd+Shift+P).
+   - Select "Remote-SSH: Connect to Host...".
+   - Enter: `ssh user@localhost -p 2222`
+   - Enter the password you set for the 'user' account.
+   - Once connected, open the folder `/home/user` in VSCode.
+
+This allows you to edit and debug your assignments directly in VSCode while running inside the Docker environment.
+
 ## Notes
 
 - This setup has been tested and works reasonably well on Apple Silicon Macs
