@@ -1,0 +1,8 @@
+.bash_history
+.cache/
+.sudo_as_admin_successful
+.vscode-remote-containers/
+.vscode-server/
+.wget-hsts
+.DS_Store
+.bash_history
