@@ -1,1 +1,0 @@
-pointer.o: pointer.c
