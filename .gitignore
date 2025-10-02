@@ -5,3 +5,51 @@
 .vscode-server/
 .wget-hsts
 .DS_Store
+
+# C/C++ specific ignores
+# Object files
+*.o
+*.ko
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build directories
+build/
+dist/
+bin/
+
+# IDE files
+.vscode/
+
+# OS generated files
+Thumbs.db
+
+# Temporary files
+*~
+*.swp
+*.swo
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Other tools
+# Add more as needed for your project
